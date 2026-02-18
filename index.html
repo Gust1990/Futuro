@@ -3,76 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Datos para Proyección 2028</title>
+    <title>Analizador de Proyección 4 Años</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #1e1e1e; color: #ddd; padding: 20px; display: flex; justify-content: center; }
-        .container { background-color: #2d2d2d; padding: 30px; border-radius: 10px; width: 100%; max-width: 700px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        h1 { color: #00bcd4; text-align: center; border-bottom: 2px solid #444; padding-bottom: 10px; }
-        .section { margin-bottom: 25px; border-left: 4px solid #00bcd4; padding-left: 15px; }
-        label { display: block; margin-bottom: 8px; font-weight: bold; color: #fff; }
-        textarea, input[type="text"] { width: 100%; background: #333; border: 1px solid #555; color: #fff; padding: 10px; border-radius: 5px; box-sizing: border-box; font-family: sans-serif; margin-bottom: 10px; }
-        textarea { height: 80px; resize: vertical; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #1a1a1a; color: #eee; padding: 20px; display: flex; justify-content: center; }
+        .container { background-color: #262626; padding: 30px; border-radius: 12px; width: 100%; max-width: 750px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); border: 1px solid #333; }
+        h1 { color: #00bcd4; text-align: center; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px; }
+        .subtitle { text-align: center; color: #888; margin-bottom: 30px; font-size: 0.9em; }
         
-        .btn-group { display: flex; gap: 10px; margin-top: 20px; }
-        button { background-color: #00bcd4; color: #000; font-weight: bold; border: none; padding: 15px; width: 100%; border-radius: 5px; cursor: pointer; font-size: 1.1em; transition: 0.2s; }
-        button:hover { background-color: #00acc1; }
-        .btn-clear { background-color: #444; color: #fff; }
-        .btn-clear:hover { background-color: #555; }
-        .btn-copy { background-color: #4caf50; color: #fff; margin-top: 10px; }
-        .btn-copy:hover { background-color: #45a049; }
+        .section { margin-bottom: 20px; border-left: 3px solid #00bcd4; padding-left: 20px; background: rgba(255,255,255,0.02); padding-top: 10px; padding-bottom: 10px; border-radius: 0 8px 8px 0; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #00bcd4; font-size: 0.9em; }
+        .desc { font-size: 0.8em; color: #aaa; margin-bottom: 10px; }
+        
+        textarea { width: 100%; background: #111; border: 1px solid #444; color: #00ffcc; padding: 12px; border-radius: 6px; box-sizing: border-box; font-family: 'Consolas', monospace; resize: vertical; min-height: 70px; }
+        textarea:focus { border-color: #00bcd4; outline: none; box-shadow: 0 0 8px rgba(0,188,212,0.3); }
 
-        #result-area { display: none; margin-top: 30px; background: #000; padding: 20px; border: 1px dashed #00bcd4; }
-        .copy-text { color: #00bcd4; font-size: 0.9em; margin-bottom: 10px; display: block; }
+        .btn-group { display: flex; gap: 12px; margin-top: 25px; }
+        button { flex: 2; background-color: #00bcd4; color: #000; font-weight: bold; border: none; padding: 15px; border-radius: 6px; cursor: pointer; font-size: 1em; transition: 0.3s; text-transform: uppercase; }
+        button:hover { background-color: #00e5ff; transform: translateY(-2px); }
+        .btn-clear { flex: 1; background-color: #333; color: #ff5252; border: 1px solid #ff5252; }
+        .btn-clear:hover { background-color: #ff5252; color: #fff; }
+
+        #result-area { display: none; margin-top: 35px; background: #080808; padding: 25px; border: 1px dashed #00bcd4; border-radius: 8px; }
+        .copy-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .copy-text { color: #00bcd4; font-weight: bold; font-size: 0.85em; }
+        .btn-copy { background-color: #4caf50; color: white; padding: 10px 20px; width: auto; font-size: 0.9em; margin-top: 15px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🧬 Variables de Vida</h1>
-    <p style="text-align: center; color: #aaa;">Completa los campos para generar tu perfil de análisis.</p>
+    <h1>🧬 Matriz de Vida</h1>
+    <p class="subtitle">Análisis de proyección estratégica a 4 años</p>
 
     <div class="section">
-        <label>1. Trayectoria Profesional / Académica</label>
-        <p style="font-size: 0.8em; color: #888;">¿Qué estudiaste? ¿Trabajas de eso? ¿Te sientes estancado o en ascenso?</p>
-        <textarea id="profesion" placeholder="Ej: Estudié sistemas, trabajo en seguridad pero quiero volver a la tecnología..."></textarea>
+        <label>1. Estatus Profesional / Académico</label>
+        <p class="desc">¿En qué punto estás de tu formación o trabajo actual?</p>
+        <textarea id="profesion" placeholder="Ej: Finalizando tercer año de ingeniería, trabajando en logística..."></textarea>
     </div>
 
     <div class="section">
-        <label>2. Comportamiento Financiero</label>
-        <p style="font-size: 0.8em; color: #888;">¿Eres ahorrador, inversor agresivo o gastas impulsivamente? ¿Tienes deudas recurrentes?</p>
-        <textarea id="finanzas" placeholder="Ej: Invierto en bolsa agresivamente, a veces gano mucho, a veces pierdo..."></textarea>
+        <label>2. Salud Financiera</label>
+        <p class="desc">Hábitos de gasto, ahorros o deudas actuales.</p>
+        <textarea id="finanzas" placeholder="Ej: Controlando deudas, intentando ahorrar el 10%..."></textarea>
     </div>
 
     <div class="section">
-        <label>3. Entorno Familiar y Relaciones</label>
-        <p style="font-size: 0.8em; color: #888;">Conflictos actuales, personas que dependen de ti o personas que te apoyan.</p>
-        <textarea id="relaciones" placeholder="Ej: Vivo con mi madre, tengo pareja estable, conflicto con vecinos..."></textarea>
+        <label>3. Red de Apoyo y Relaciones</label>
+        <p class="desc">Familia, pareja o conflictos que consumen tu energía.</p>
+        <textarea id="relaciones" placeholder="Ej: Relación estable, apoyando económicamente a mis padres..."></textarea>
     </div>
 
     <div class="section">
-        <label>4. Crisis o Evento Reciente (Cisne Negro)</label>
-        <p style="font-size: 0.8em; color: #888;">Describe el evento que te preocupa hoy (ej. el tema de los perros).</p>
-        <textarea id="crisis" placeholder="Ej: Mis perros se atacaron, hay heridos, hay tensión en la casa..."></textarea>
+        <label>4. El "Cisne Negro" (Crisis Actual)</label>
+        <p class="desc">¿Qué evento inesperado está alterando tu presente?</p>
+        <textarea id="crisis" placeholder="Ej: Inestabilidad en el hogar por problemas externos..."></textarea>
     </div>
 
     <div class="section">
-        <label>5. ¿Dónde QUIERES estar en 2028?</label>
-        <textarea id="objetivo" placeholder="Ej: Quiero estar recibido, viviendo solo y sin este problema..."></textarea>
+        <label id="label-objetivo">5. Horizonte de Éxito</label>
+        <textarea id="objetivo" placeholder="Describe tu situación ideal en 4 años..."></textarea>
     </div>
 
     <div class="btn-group">
-        <button onclick="generarReporte()">GENERAR TEXTO</button>
-        <button class="btn-clear" onclick="limpiarDatos()">LIMPIAR TODO</button>
+        <button onclick="generarReporte()">PROCESAR PARA GEMINI</button>
+        <button class="btn-clear" onclick="limpiarDatos()">BORRAR TODO</button>
     </div>
 
     <div id="result-area">
-        <span class="copy-text">👇 RESULTADO GENERADO:</span>
-        <textarea id="output" style="height: 200px; font-family: monospace;"></textarea>
-        <button class="btn-copy" id="copyBtn" onclick="copiarAlPortapapeles()">COPIAR PARA GEMINI</button>
+        <div class="copy-header">
+            <span class="copy-text">SISTEMA LISTO: COPIA EL TEXTO ABAJO</span>
+        </div>
+        <textarea id="output" readonly style="height: 250px; font-size: 0.9em; border-color: #00bcd4;"></textarea>
+        <button class="btn-copy" id="copyBtn" onclick="copiarAlPortapapeles()">COPIAR AL PORTAPAPELES</button>
     </div>
 </div>
 
 <script>
+    // Variables dinámicas
+    const hoy = new Date();
+    const anioActual = hoy.getFullYear();
+    const anioMeta = anioActual + 4; // Configurado a 4 años exactos
+
+    // Actualizar etiquetas visuales
+    document.getElementById('label-objetivo').innerText = `5. ¿Dónde QUIERES estar en ${anioMeta}?`;
+
     function generarReporte() {
         const p1 = document.getElementById('profesion').value;
         const p2 = document.getElementById('finanzas').value;
@@ -80,48 +94,56 @@
         const p4 = document.getElementById('crisis').value;
         const p5 = document.getElementById('objetivo').value;
 
-        const reporte = `[ANÁLISIS DE FUTURO SOLICITADO]
+        if(!p1 || !p4 || !p5) {
+            alert("Por favor, completa al menos los campos de Trayectoria, Crisis y Meta.");
+            return;
+        }
 
-DATOS DEL USUARIO:
-1. TRAYECTORIA: ${p1}
+        const reporte = `[SOLICITUD DE AUDITORÍA DE VIDA - PROYECCIÓN ${anioMeta}]
+
+--- CONTEXTO TEMPORAL ---
+Fecha de análisis: ${hoy.toLocaleDateString()}
+Horizonte objetivo: ${anioMeta} (Plazo: 4 años)
+
+--- DATOS PROPORCIONADOS ---
+1. TRAYECTO: ${p1}
 2. FINANZAS: ${p2}
 3. RELACIONES: ${p3}
 4. CRISIS ACTUAL: ${p4}
-5. OBJETIVO 2028: ${p5}
+5. META A 4 AÑOS (${anioMeta}): ${p5}
 
->> Por favor Gemini, cruza estos datos y dime mi proyección realista para 2028.`;
+--- INSTRUCCIÓN PARA GEMINI ---
+Actúa como un estratega senior. Realiza un cruce de variables considerando que el usuario tiene 4 años para resolver la crisis actual y alcanzar su meta. 
+1. ¿Es realista el objetivo según la trayectoria y finanzas? 
+2. ¿Cómo impactará la crisis actual en el largo plazo si no se controla hoy? 
+3. Dame 3 hitos concretos que debo cumplir de aquí al ${anioMeta}.`;
 
         document.getElementById('output').value = reporte;
         document.getElementById('result-area').style.display = 'block';
-        window.scrollTo(0, document.body.scrollHeight);
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
 
     function copiarAlPortapapeles() {
-        const outputText = document.getElementById('output');
-        outputText.select();
-        outputText.setSelectionRange(0, 99999); // Para móviles
-        navigator.clipboard.writeText(outputText.value);
-
-        const btn = document.getElementById('copyBtn');
-        const originalText = btn.innerText;
-        btn.innerText = "¡COPIADO! ✅";
-        btn.style.backgroundColor = "#2e7d32";
+        const output = document.getElementById('output');
+        output.select();
+        navigator.clipboard.writeText(output.value);
         
+        const btn = document.getElementById('copyBtn');
+        btn.innerText = "¡LISTO PARA PEGAR! ✅";
+        btn.style.backgroundColor = "#2e7d32";
         setTimeout(() => {
-            btn.innerText = originalText;
+            btn.innerText = "COPIAR AL PORTAPAPELES";
             btn.style.backgroundColor = "#4caf50";
         }, 2000);
     }
 
     function limpiarDatos() {
-        if(confirm("¿Estás seguro de que quieres borrar todos los datos escritos?")) {
-            document.getElementById('profesion').value = "";
-            document.getElementById('finanzas').value = "";
-            document.getElementById('relaciones').value = "";
-            document.getElementById('crisis').value = "";
-            document.getElementById('objetivo').value = "";
+        if(confirm("Se borrarán todos los datos ingresados. ¿Continuar?")) {
+            ['profesion', 'finanzas', 'relaciones', 'crisis', 'objetivo'].forEach(id => {
+                document.getElementById(id).value = "";
+            });
             document.getElementById('result-area').style.display = 'none';
-            window.scrollTo(0, 0);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
 </script>
